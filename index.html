@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotoMart — Premium Bike Accessories & Riding Gear</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================= SITE HEADER ================= -->
+  <header class="site-header">
+    <a class="logo-link" href="#" aria-label="MotoMart Home">
+      <img src="logo.png" alt="MOTOMART - Vehicle Accessories Store" class="brand-logo" />
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#shop" class="nav-tab-link active" data-tab="shop">Shop</a>
+      <a href="#categories" class="nav-tab-link" data-tab="categories">Categories</a>
+      <a href="#sizeguide" class="nav-tab-link" data-tab="sizeguide">Size Guide</a>
+      <a href="#reviews" class="nav-tab-link" data-tab="reviews">Reviews</a>
+      <a href="#faq" class="nav-tab-link" data-tab="faq">FAQ</a>
+      <a href="#about" class="nav-tab-link" data-tab="about">Our Story</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Dark / Light Mode Toggle -->
+      <button class="icon-button theme-toggle" id="themeToggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <!-- Search Trigger -->
+      <button class="icon-button" aria-label="Search" id="searchToggle" title="Search Gear">
+        ⌕
+      </button>
+
+      <!-- Wishlist Button -->
+      <button class="icon-button wishlist-button" id="wishlistButton" aria-label="Wishlist" title="View Wishlist">
+        <span class="wishlist-icon">♥</span>
+        <b id="wishlistCount" class="badge-count">0</b>
+      </button>
+
+      <!-- Account / Registration Button -->
+      <button class="icon-button account-button" id="accountButton" aria-label="Account" title="Sign In / Register Account">
+        <span class="account-icon">👤</span>
+        <span class="account-badge-indicator" id="accountBadge" style="display:none;"></span>
+      </button>
+
+      <!-- Cart Button -->
+      <button class="cart-button" id="cartButton" aria-label="Open Cart" title="View Shopping Cart">
+        <span>Cart</span>
+        <b id="cartCount">0</b>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-button" id="menuButton" aria-label="Open Menu">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT (TABBED VIEWS) ================= -->
+  <main>
+    <!-- 1. SHOP TAB VIEW (HERO TITLE PAGE ONLY) -->
+    <div class="tab-page-view active" id="tabView-shop">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">GEAR UP. RIDE OUT. · MOTOMART 2026</p>
+          <h1>Make every<br><em>ride</em> count.</h1>
+          <p class="hero-text">
+            ECE 22.06 certified helmets, weather-sealed LED arrays, and ballistic-grade rider accessories built for long expeditions.
+          </p>
+          <div class="hero-cta-group">
+            <button class="primary-button" onclick="switchTab('categories')">Explore Gear <span>↗</span></button>
+            <button class="outline-button" onclick="switchTab('sizeguide')">Size Guide <span>📐</span></button>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="sun"></div>
+          <div class="art-ring"></div>
+          <div class="bike-graphic">🏍</div>
+          <p class="vertical-label">EST. 2026 · MOTOMART</p>
+        </div>
+
+        <div class="hero-scroll" onclick="switchTab('categories')">EXPLORE CATEGORIES <span>↓</span></div>
+      </section>
+    </div>
+
+    <!-- 2. CATEGORIES TAB VIEW (ALL 2026 GEAR ITEMS & CATEGORY BROWSER) -->
+    <div class="tab-page-view" id="tabView-categories">
+      <div class="tab-page-header">
+        <p class="eyebrow">MOTO DISCIPLINES & GEAR TYPES</p>
+        <h2>Explore Gear by Category</h2>
+        <p class="tab-subtext">Precision gear engineered specifically for safety, highway endurance, electronic utility, and bike care.</p>
+      </div>
+
+      <!-- Interactive Category Showcase Cards -->
+      <div class="category-showcase-grid">
+        <div class="category-card-tile" onclick="selectCategoryView('safety')">
+          <div class="cat-tile-badge">5 Items</div>
+          <div class="cat-tile-thumb">
+            <img src="images/cat-safety.jpg" alt="Safety & Armor" class="cat-tile-photo" />
+          </div>
+          <h3>Safety & Armor</h3>
+          <p>ECE 22.06 Carbon Helmets, CE Level 2 Touring Jackets, Bionic D3O Knee Armor, and Shift Pro Carbon Knuckle Gloves.</p>
+          <span class="cat-tile-link">Browse Safety Gear →</span>
+        </div>
+
+        <div class="category-card-tile" onclick="selectCategoryView('tech')">
+          <div class="cat-tile-badge">2 Items</div>
+          <div class="cat-tile-thumb">
+            <img src="images/cat-tech.jpg" alt="Electronics & Tech" class="cat-tile-photo" />
+          </div>
+          <h3>Electronics & Tech</h3>
+          <p>8,000 Lumen IP68 Submersible Auxiliary Pods and 28-piece metric chrome-vanadium roadside toolkits.</p>
+          <span class="cat-tile-link">Browse Tech & Electricals →</span>
+        </div>
+
+        <div class="category-card-tile" onclick="selectCategoryView('comfort')">
+          <div class="cat-tile-badge">2 Items</div>
+          <div class="cat-tile-thumb">
+            <img src="images/cat-comfort.jpg" alt="Comfort & Fit" class="cat-tile-photo" />
+          </div>
+          <h3>Comfort & Fit</h3>
+          <p>Thermal wind-shield fleece neck gaiters and high-ventilation touring gloves for extreme weather.</p>
+          <span class="cat-tile-link">Browse Comfort Essentials →</span>
+        </div>
+
+        <div class="category-card-tile" onclick="selectCategoryView('style')">
+          <div class="cat-tile-badge">2 Items</div>
+          <div class="cat-tile-thumb">
+            <img src="images/cat-apparel.jpg" alt="Packs & Apparel" class="cat-tile-photo" />
+          </div>
+          <h3>Packs & Apparel</h3>
+          <p>100% Waterproof TPU 35L Roll Tail Packs with Fidlock buckles and UV400 TR90 Polarized Sunglasses.</p>
+          <span class="cat-tile-link">Browse Luggage & Style →</span>
+        </div>
+
+        <div class="category-card-tile" onclick="selectCategoryView('maintenance')">
+          <div class="cat-tile-badge">2 Items</div>
+          <div class="cat-tile-thumb">
+            <img src="images/cat-maintenance.jpg" alt="Care & Maintenance" class="cat-tile-photo" />
+          </div>
+          <h3>Care & Maintenance</h3>
+          <p>1500 GSM Twisted-Loop Scratchless Microfiber Drying Towels and Sheeba High-Gloss Liquid Polish.</p>
+          <span class="cat-tile-link">Browse Detailing Supplies →</span>
+        </div>
+      </div>
+
+      <!-- 2026 COLLECTION PRODUCT CATALOG & CATEGORY BROWSER -->
+      <section class="shop-section" id="categoriesCatalogArea" style="padding-top: 20px;">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE 2026 COLLECTION</p>
+            <h2>Find your next<br><em>favourite.</em></h2>
+          </div>
+          <div class="shop-tools">
+            <label class="search-box">
+              ⌕ 
+              <input id="searchInput" type="search" placeholder="Search gear, helmets, lights..." autocomplete="off" />
+              <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display:none;">✕</button>
+            </label>
+            <span id="productTotal">18 products</span>
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="category-tabs" id="categories">
+          <button class="active" data-category="all">All Gear</button>
+          <button data-category="safety">Safety & Armor</button>
+          <button data-category="tech">Electronics & Tech</button>
+          <button data-category="comfort">Comfort & Fit</button>
+          <button data-category="style">Packs & Apparel</button>
+          <button data-category="maintenance">Care & Maintenance</button>
+        </div>
+
+        <!-- Advanced Filter & Sort Toolbar -->
+        <div class="filter-toolbar">
+          <div class="filter-group">
+            <label for="sortSelect" class="filter-label">Sort By:</label>
+            <select id="sortSelect" class="filter-select">
+              <option value="featured">Featured / Best Match</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="bestseller">Bestsellers</option>
+            </select>
+          </div>
+
+          <div class="filter-group price-filter-group">
+            <label for="priceRange" class="filter-label">
+              Max Price: <span id="priceRangeValue" class="price-highlight">₹5,000</span>
+            </label>
+            <input type="range" id="priceRange" min="500" max="5000" step="100" value="5000" class="range-slider" />
+          </div>
+
+          <div class="filter-group toggle-group">
+            <label class="switch-container">
+              <input type="checkbox" id="inStockToggle" />
+              <span class="slider-switch"></span>
+              <span class="switch-label">In Stock Only</span>
+            </label>
+          </div>
+
+          <button id="resetFiltersBtn" class="reset-filters-btn" title="Reset all applied filters">
+            Reset Filters ↺
+          </button>
+        </div>
+
+        <!-- Active Filters Pill Container -->
+        <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
+          <span class="active-filters-label">Active:</span>
+          <div id="activeFiltersList" class="active-filters-list"></div>
+        </div>
+
+        <!-- Products Grid with All Items -->
+        <div class="product-grid" id="productGrid">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </section>
+    </div>
+
+    <!-- 3. SIZE GUIDE TAB VIEW -->
+    <div class="tab-page-view" id="tabView-sizeguide">
+      <div class="tab-page-header">
+        <p class="eyebrow">FIT & DIMENSIONS LABORATORY</p>
+        <h2>Master Sizing Guide & Fit Advisor</h2>
+        <p class="tab-subtext">Precision fit is critical for motorcycle safety. Use our millimetric charts and interactive fit calculator below.</p>
+      </div>
+
+      <div class="sizeguide-tab-container">
+        <div class="size-tabs" style="justify-content: center; margin-bottom: 30px;">
+          <button class="size-tab-btn active" data-tab="helmets" onclick="switchSizeGuideTab('helmets')">🪖 Helmets (Head Circumference)</button>
+          <button class="size-tab-btn" data-tab="gloves" onclick="switchSizeGuideTab('gloves')">🧤 Gloves (Palm Width)</button>
+          <button class="size-tab-btn" data-tab="jackets" onclick="switchSizeGuideTab('jackets')">🧥 Jackets & Suits (Chest)</button>
+          <button class="size-tab-btn" data-tab="boots" onclick="switchSizeGuideTab('boots')">🥾 Boots (Euro / UK Size)</button>
+        </div>
+
+        <!-- Sizing Content Panes -->
+        <div class="size-tab-content active" id="tab-helmets-page">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size Label</th>
+                <th>Head Circumference (cm)</th>
+                <th>Head Circumference (Inches)</th>
+                <th>Hat Size (US)</th>
+                <th>Riding Discipline Fit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>S</b></td><td>55 – 56 cm</td><td>21.6" – 22.0"</td><td>6 7/8 – 7</td><td>Snug fit for slim crown and compact cheekbones</td></tr>
+              <tr><td><b>M</b></td><td>57 – 58 cm</td><td>22.4" – 22.8"</td><td>7 1/8 – 7 1/4</td><td>Standard medium fit (most common adult rider)</td></tr>
+              <tr><td><b>L</b></td><td>59 – 60 cm</td><td>23.2" – 23.6"</td><td>7 3/8 – 7 1/2</td><td>Comfort touring fit for long interstate runs</td></tr>
+              <tr><td><b>XL</b></td><td>61 – 62 cm</td><td>24.0" – 24.4"</td><td>7 5/8 – 7 3/4</td><td>Expedition fit with room for balaclava or comms mic</td></tr>
+            </tbody>
+          </table>
+          <div class="measure-tip">
+            💡 <b>How to measure your head:</b> Wrap a flexible tailor's tape measure around the widest part of your head—approx. 2.5cm (1 inch) directly above your eyebrows, passing over the slight bump at the back of your skull.
+          </div>
+        </div>
+
+        <div class="size-tab-content" id="tab-gloves-page" style="display:none;">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Palm Width (Inches)</th>
+                <th>Palm Circumference (cm)</th>
+                <th>Fit Characteristic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>S</b></td><td>7.5" – 8.0"</td><td>19 – 20 cm</td><td>Snug track fit; leather breaks in over 500 km</td></tr>
+              <tr><td><b>M</b></td><td>8.0" – 8.5"</td><td>20 – 21.5 cm</td><td>Balanced touring fit with full fingertip dexterity</td></tr>
+              <tr><td><b>L</b></td><td>8.5" – 9.0"</td><td>21.5 – 23 cm</td><td>Comfort fit with knuckle armor clearance</td></tr>
+              <tr><td><b>XL</b></td><td>9.0" – 9.5"</td><td>23 – 24.5 cm</td><td>Accommodates wider palms and longer thumbs</td></tr>
+            </tbody>
+          </table>
+          <div class="measure-tip">
+            💡 <b>How to measure hands:</b> Measure across the widest portion of your palm just beneath your knuckles, excluding your thumb.
+          </div>
+        </div>
+
+        <div class="size-tab-content" id="tab-jackets-page" style="display:none;">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Jacket Size</th>
+                <th>Chest Size (Inches)</th>
+                <th>Waist (Inches)</th>
+                <th>Recommended Height</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>S (38)</b></td><td>37" – 39"</td><td>30" – 32"</td><td>5'5" – 5'8" (165 – 173 cm)</td></tr>
+              <tr><td><b>M (40)</b></td><td>39" – 41"</td><td>32" – 34"</td><td>5'8" – 5'11" (173 – 180 cm)</td></tr>
+              <tr><td><b>L (42)</b></td><td>41" – 43"</td><td>34" – 36"</td><td>5'10" – 6'1" (178 – 185 cm)</td></tr>
+              <tr><td><b>XL (44)</b></td><td>43" – 45"</td><td>36" – 38"</td><td>6'0" – 6'3" (183 – 190 cm)</td></tr>
+            </tbody>
+          </table>
+          <div class="measure-tip">
+            💡 <b>Layering note:</b> MotoMart All-Terrain jackets include removable thermal + rain liners. If you plan to wear a heavy fleece layer, choose one size up.
+          </div>
+        </div>
+
+        <div class="size-tab-content" id="tab-boots-page" style="display:none;">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>EU Size</th>
+                <th>UK / Indian Size</th>
+                <th>US Size</th>
+                <th>Foot Length (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>EU 41</b></td><td>UK 7</td><td>US 8</td><td>25.5 – 26.0 cm</td></tr>
+              <tr><td><b>EU 42</b></td><td>UK 8</td><td>US 9</td><td>26.5 – 27.0 cm</td></tr>
+              <tr><td><b>EU 43</b></td><td>UK 9</td><td>US 10</td><td>27.5 – 28.0 cm</td></tr>
+              <tr><td><b>EU 44</b></td><td>UK 10</td><td>US 11</td><td>28.5 – 29.0 cm</td></tr>
+            </tbody>
+          </table>
+          <div class="measure-tip">
+            💡 <b>Boot fit tip:</b> Motorcycle adventure boots should feel firmly anchored at the heel disc with a thumb's width of wiggle room in the reinforced toe-box for shift lever operation.
+          </div>
+        </div>
+
+        <!-- Interactive Fit Finder Widget -->
+        <div class="fit-calculator-card">
+          <div class="calc-header">
+            <span class="calc-icon">📐</span>
+            <div>
+              <h3>Instant Fit Calculator</h3>
+              <p>Enter your measurement in centimeters to get your recommended size.</p>
+            </div>
+          </div>
+          <div class="calc-form-row">
+            <select id="fitCalcType" class="filter-select" style="min-width: 180px;">
+              <option value="helmet">Helmets (Head Circumference)</option>
+              <option value="gloves">Gloves (Palm Circumference)</option>
+              <option value="jacket">Jacket (Chest Inches)</option>
+            </select>
+            <input type="number" id="fitCalcValue" placeholder="Enter number (e.g. 58 for helmet)" />
+            <button type="button" class="primary-button" onclick="calculateInstantFit()">Find Size 🎯</button>
+          </div>
+          <div id="fitCalcResult" class="fit-calc-result" style="display:none;"></div>
+        </div>
+
+        <!-- Return Guarantee Banner -->
+        <div class="size-guarantee-box">
+          <div class="guarantee-icon">🔄</div>
+          <div>
+            <h4>30-Day Zero-Hassle Doorstep Size Exchange</h4>
+            <p>If your gear feels even slightly tight or loose upon delivery, initiate a size exchange in 1 click and our courier will deliver the replacement size directly to your doorstep for free.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. REVIEWS TAB VIEW -->
+    <div class="tab-page-view" id="tabView-reviews">
+      <div class="tab-page-header">
+        <p class="eyebrow">COMMUNITY TESTED & VERIFIED</p>
+        <h2>Real Riders. Real Miles.</h2>
+        <p class="tab-subtext">Read unvarnished feedback from daily highway commuters, track riders, and long-distance adventure tourers.</p>
+      </div>
+
+      <!-- Rating Overview Dashboard -->
+      <div class="reviews-dashboard-card">
+        <div class="rating-big-score">
+          <span class="rating-number">4.9</span>
+          <div class="stars-large">★★★★★</div>
+          <small>Based on 4,800+ Verified Rider Reviews</small>
+        </div>
+
+        <div class="rating-breakdown-bars">
+          <div class="breakdown-row">
+            <span>Safety & Impact Protection</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: 98%;"></div></div>
+            <b>4.9 / 5</b>
+          </div>
+          <div class="breakdown-row">
+            <span>High-Speed Aerodynamics & Ventilation</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: 96%;"></div></div>
+            <b>4.8 / 5</b>
+          </div>
+          <div class="breakdown-row">
+            <span>Monsoon Waterproofing & Sealing</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+            <b>5.0 / 5</b>
+          </div>
+          <div class="breakdown-row">
+            <span>Value For Money & Durability</span>
+            <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+            <b>4.7 / 5</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <section class="testimonials-section" style="padding-top: 0;">
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"The Trailblazer helmet kept me completely fatigue-free on a 900km trip to Ladakh. Optical clarity and ventilation are world-class. Zero neck strain even with high crosswinds."</p>
+            <div class="author">
+              <div class="avatar">NM</div>
+              <div>
+                <h4>Nihar Mistry</h4>
+                <p>Rides KTM 390 Adventure · Bengaluru</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Auxiliary Lights punch right through zero-visibility monsoon fog. Mounting kit fits flush to my Himalayan crashbars and withstands endless gravel vibrations."</p>
+            <div class="author">
+              <div class="avatar">EA</div>
+              <div>
+                <h4>Elvish Amanna</h4>
+                <p>Rides Himalayan 450 · Pune</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Shift Pro Gloves have saved my palms twice. The Kevlar reinforcement and touch-screen capacitive fingertips are worth every single rupee."</p>
+            <div class="author">
+              <div class="avatar">TB</div>
+              <div>
+                <h4>Tushita Bharwad</h4>
+                <p>Rides Triumph Scrambler 400X · Delhi</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Vanguard 35L Roll Pack survived a 6-hour continuous cloudburst through Munnar ghats. Not a single drop entered my camera bag inside."</p>
+            <div class="author">
+              <div class="avatar">VA</div>
+              <div>
+                <h4>Vikram A.</h4>
+                <p>Rides BMW G310GS · Kochi</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"The Precision Roadside Toolkit is a permanent fixture under my seat. Had a loose shifter link on the highway and fixed it in 2 minutes flat."</p>
+            <div class="author">
+              <div class="avatar">AP</div>
+              <div>
+                <h4>Aditya P.</h4>
+                <p>Rides Royal Enfield Interceptor 650 · Mumbai</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"D3O Bionic Knee Guards stay in place without cutting off calf circulation. Super pliable while riding, but give total confidence."</p>
+            <div class="author">
+              <div class="avatar">HK</div>
+              <div>
+                <h4>Harish K.</h4>
+                <p>Rides Yamaha R15 V4 · Hyderabad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 5. FAQ TAB VIEW -->
+    <div class="tab-page-view" id="tabView-faq">
+      <div class="tab-page-header">
+        <p class="eyebrow">HELP & SUPPORT CENTER</p>
+        <h2>Frequently Asked Questions</h2>
+        <p class="tab-subtext">Everything you need to know about our 2026 gear, safety certifications, doorstep returns, and warranties.</p>
+      </div>
+
+      <div class="faq-section" style="padding-top: 0;">
+        <div class="faq-container">
+          <div class="faq-item active">
+            <button class="faq-question">
+              <span>Are MotoMart helmets certified for road and highway use?</span>
+              <span class="faq-icon">−</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. All MotoMart helmets meet or exceed both **ECE 22.06** and **DOT FMVSS 218** safety standards, featuring multi-density EPS liners and emergency quick-release cheek pads.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is your return and sizing exchange policy?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We offer a hassle-free **30-Day Free Return & Exchange** guarantee. If a helmet, jacket, or pair of gloves doesn't fit comfortably, initiate an exchange and we will arrange a doorstep size replacement at no extra cost.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How fast is shipping, and is Cash on Delivery (COD) available?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Orders are dispatched within 24 hours. Metro deliveries arrive in 2–3 business days; other regions take 3–5 days. We support Cash on Delivery (COD) across 19,000+ Indian pincodes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What warranty comes with electrical accessories like Auxiliary Lights?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>All MotoMart tech accessories include an all-weather **2-Year Replacement Warranty** covering LED degradation, water ingress (IP67+), and wiring harness defects.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do MotoMart gloves support smartphone touchscreens while riding?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Both the index finger and thumb feature smart conductive microfiber threads that let you operate GPS navigation and map applications without taking your gloves off.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What happens in case of an accidental crash with MotoMart gear?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We offer a **3-Year Crash Replacement Program**. If you suffer an on-road accident and your helmet or armored jacket takes impact damage, contact our support with photos for a 50% discount on your replacement gear.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rider Support Contact Concierge -->
+        <div class="support-concierge-card">
+          <h3>Need More Answers?</h3>
+          <p>Our dedicated rider support team is active 7 days a week from 9 AM to 9 PM IST.</p>
+          <div class="support-action-chips">
+            <a href="mailto:support@motomart.in" class="support-chip">✉️ support@motomart.in</a>
+            <a href="tel:+919876543210" class="support-chip">📞 1800-MOTO-MART</a>
+            <button class="support-chip" onclick="showToast('Rider WhatsApp Chat opening... 💬')">💬 WhatsApp Rider Desk</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. OUR STORY TAB VIEW -->
+    <div class="tab-page-view" id="tabView-about">
+      <div class="tab-page-header">
+        <p class="eyebrow">BORN ON THE ROAD · EST. 2026</p>
+        <h2>The MotoMart Story</h2>
+        <p class="tab-subtext">Engineered by hardcore riders for endurance touring, daily highway navigation, and unforgiving Indian road conditions.</p>
+      </div>
+
+      <!-- Feature Banner / Mission -->
+      <section class="feature-banner" style="margin-top: 0;">
+        <div>
+          <p class="eyebrow">UNCOMPROMISING RIDER SAFETY</p>
+          <h2>Engineering That Protects Every Mile</h2>
+        </div>
+        <p>
+          MotoMart was founded with a singular conviction: riders should never have to choose between exorbitant import markups and questionable safety gear. Every product in our 2026 catalog is tested across high-altitude Himalayan passes, tropical coastal downpours, and searing desert highways.
+        </p>
+        <button class="outline-button" onclick="switchTab('shop')">Explore The 2026 Catalog ↗</button>
+      </section>
+
+      <!-- 4 Pillars Grid -->
+      <div class="story-pillars-grid">
+        <div class="pillar-card">
+          <span class="pillar-icon">🧪</span>
+          <h4>Aerospace Carbon Metallurgy</h4>
+          <p>Multi-axial carbon aramid composite shells engineered for progressive kinetic energy absorption during high-speed impacts.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">💨</span>
+          <h4>Wind-Tunnel Aerodynamics</h4>
+          <p>Sculpted spoilers and venturi vacuum channels that neutralize buffeting and neck fatigue at speeds exceeding 120 km/h.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🌧️</span>
+          <h4>All-Weather IP68 Sealing</h4>
+          <p>Submersible waterproof ratings across roll packs, auxiliary lighting pods, and seam-taped touring membrane apparel.</p>
+        </div>
+
+        <div class="pillar-card">
+          <span class="pillar-icon">🛡️</span>
+          <h4>Crash Replacement Promise</h4>
+          <p>Rider-first commitment providing crash replacement discounts and instant 30-day doorstep sizing replacements.</p>
+        </div>
+      </div>
+
+      <!-- Milestone Metrics Counter -->
+      <div class="milestones-bar">
+        <div class="milestone-item">
+          <b>50,000+ KM</b>
+          <span>Field Expedition Tested</span>
+        </div>
+        <div class="milestone-item">
+          <b>100%</b>
+          <span>ECE 22.06 & CE Homologated</span>
+        </div>
+        <div class="milestone-item">
+          <b>19,000+</b>
+          <span>Indian Pincodes Covered</span>
+        </div>
+        <div class="milestone-item">
+          <b>2 Years</b>
+          <span>Accidental Warranty Included</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= SITE FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo-link" href="#" aria-label="MotoMart Home">
+          <img src="logo.png" alt="MOTOMART - Vehicle Accessories Store" class="brand-logo" />
+        </a>
+        <p>Engineering endurance gear for riders who crave the open asphalt and mountain switchbacks.</p>
+        <div class="footer-badges">
+          <span class="f-badge">ECE 22.06 Certified</span>
+          <span class="f-badge">All-Weather IP67</span>
+          <span class="f-badge">ISO 9001:2026</span>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <a href="#shop" onclick="event.preventDefault(); switchTab('shop');">All Gear</a>
+        <a href="#categories" onclick="event.preventDefault(); switchTab('categories');">Categories</a>
+        <a href="#sizeguide" onclick="event.preventDefault(); switchTab('sizeguide');">Sizing Chart</a>
+        <a href="#reviews" onclick="event.preventDefault(); switchTab('reviews');">Community Reviews</a>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Customer Care</h4>
+        <a href="#faq" onclick="event.preventDefault(); switchTab('faq');">Warranty Policy</a>
+        <a href="#faq" onclick="event.preventDefault(); switchTab('faq');">Track Order</a>
+        <a href="#faq" onclick="event.preventDefault(); switchTab('faq');">30-Day Returns</a>
+        <a href="#invoice" onclick="event.preventDefault(); openInvoiceModal();">Official Invoice 📄</a>
+        <a href="#about" onclick="event.preventDefault(); switchTab('about');">Our Story & Standards</a>
+      </div>
+
+      <div class="footer-newsletter">
+        <h4>Join the Pack</h4>
+        <p>Get insider drops, route recommendations, and 10% off your first MotoMart order.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" id="newsletterEmailInput" placeholder="Enter your email" required />
+          <button type="submit" id="newsletterSubmitBtn" aria-label="Subscribe">→</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 MotoMart Supply Co. All rights reserved.</p>
+      <p>Crafted for the open road · Engineered with passion.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SLIDE-OVER CART DRAWER ================= -->
+  <div class="drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="drawer-header">
+      <h3>Your Gear Cart (<span id="drawerCartCount">0</span>)</h3>
+      <button class="close-drawer-btn" id="closeCartBtn" aria-label="Close Cart">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="shipping-progress-container">
+      <div class="shipping-progress-text" id="shippingProgressText">
+        Add <b>₹2,999</b> more for FREE Express Shipping!
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="shippingProgressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scrollable List -->
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Populated dynamically by script.js -->
+    </div>
+
+    <!-- Cart Footer with Pricing & Checkout -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Promo Code Field -->
+      <div class="promo-box">
+        <div class="promo-input-row">
+          <input type="text" id="couponInput" placeholder="Promo code (e.g. MOTOMART10)" uppercase />
+          <button id="applyCouponBtn">Apply</button>
+        </div>
+        <div id="couponFeedback" class="coupon-feedback"></div>
+      </div>
+
+      <!-- Summary Breakdown -->
+      <div class="cart-summary-breakdown">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">₹0.00</span>
+        </div>
+        <div class="summary-line discount-line" id="discountRow" style="display:none;">
+          <span>Discount (<span id="discountName">Promo</span>)</span>
+          <span id="cartDiscount">-₹0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Estimated Shipping</span>
+          <span id="cartShipping">₹199.00</span>
+        </div>
+        <div class="summary-line total-line">
+          <span>Grand Total</span>
+          <span id="cartGrandTotal">₹0.00</span>
+        </div>
+      </div>
+
+      <button class="primary-button checkout-btn" id="proceedCheckoutBtn">
+        Proceed to Checkout <span>🔒</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= WISHLIST DRAWER ================= -->
+  <div class="drawer-overlay" id="wishlistOverlay"></div>
+  <aside class="cart-drawer wishlist-drawer" id="wishlistDrawer" aria-label="Saved Wishlist">
+    <div class="drawer-header">
+      <h3>Saved Gear (<span id="drawerWishlistCount">0</span>)</h3>
+      <button class="close-drawer-btn" id="closeWishlistBtn" aria-label="Close Wishlist">✕</button>
+    </div>
+    <div class="cart-items-list" id="wishlistItemsList">
+      <!-- Populated dynamically -->
+    </div>
+  </aside>
+
+  <!-- ================= PRODUCT QUICK VIEW / DETAIL MODAL ================= -->
+  <div class="modal-backdrop" id="productModalBackdrop">
+    <div class="modal-dialog product-modal" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="closeProductModalBtn" aria-label="Close product preview">✕</button>
+      <div class="modal-body product-modal-layout" id="productModalContent">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SIZING GUIDE MODAL ================= -->
+  <div class="modal-backdrop" id="sizeGuideModalBackdrop">
+    <div class="modal-dialog size-guide-modal" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="closeSizeGuideBtn" aria-label="Close size guide">✕</button>
+      <div class="modal-body">
+        <p class="eyebrow">MOTOMART FIT LABORATORY</p>
+        <h2>Master Sizing Guide</h2>
+        <p class="modal-intro">Precision sizing ensures maximum impact distribution and comfort on high-mileage runs.</p>
+
+        <div class="size-tabs">
+          <button class="size-tab-btn active" data-tab="helmets">Helmets (Head Circumference)</button>
+          <button class="size-tab-btn" data-tab="gloves">Gloves (Palm Width)</button>
+        </div>
+
+        <div class="size-tab-content active" id="tab-helmets">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Head Circumference (cm)</th>
+                <th>Hat Size (US)</th>
+                <th>Fit Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>S</b></td><td>55 – 56 cm</td><td>6 7/8 – 7</td><td>Snug fit for slim jawlines</td></tr>
+              <tr><td><b>M</b></td><td>57 – 58 cm</td><td>7 1/8 – 7 1/4</td><td>Most common adult fit</td></tr>
+              <tr><td><b>L</b></td><td>59 – 60 cm</td><td>7 3/8 – 7 1/2</td><td>Comfort touring fit</td></tr>
+              <tr><td><b>XL</b></td><td>61 – 62 cm</td><td>7 5/8 – 7 3/4</td><td>Room for balaclava/intercom</td></tr>
+            </tbody>
+          </table>
+          <p class="measure-tip">💡 <b>How to measure:</b> Wrap a flexible seamstress tape measure around the widest part of your head—approx. 2.5cm (1 inch) above your eyebrows.</p>
+        </div>
+
+        <div class="size-tab-content" id="tab-gloves" style="display:none;">
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Palm Circumference (cm)</th>
+                <th>Palm Length (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>S</b></td><td>18 – 19 cm</td><td>17 – 18 cm</td></tr>
+              <tr><td><b>M</b></td><td>20 – 21 cm</td><td>18.5 – 19.5 cm</td></tr>
+              <tr><td><b>L</b></td><td>22 – 23 cm</td><td>20 – 21 cm</td></tr>
+              <tr><td><b>XL</b></td><td>24 – 25 cm</td><td>21.5 – 22.5 cm</td></tr>
+            </tbody>
+          </table>
+          <p class="measure-tip">💡 <b>How to measure:</b> Measure across the widest part of your dominant hand just below the knuckles, excluding the thumb.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SIMULATED 3-STEP CHECKOUT MODAL ================= -->
+  <div class="modal-backdrop" id="checkoutModalBackdrop">
+    <div class="modal-dialog checkout-modal" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="closeCheckoutBtn" aria-label="Close checkout">✕</button>
+
+      <!-- Stepper Header -->
+      <div class="checkout-stepper">
+        <div class="step-node active" id="stepNode1">
+          <span class="step-num">1</span>
+          <span class="step-label">Shipping</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-node" id="stepNode2">
+          <span class="step-num">2</span>
+          <span class="step-label">Payment</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-node" id="stepNode3">
+          <span class="step-num">3</span>
+          <span class="step-label">Confirmation</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Delivery Address -->
+      <div class="checkout-step-pane" id="checkoutStep1">
+        <h3>Delivery Details</h3>
+        <p class="step-sub">Where should we dispatch your rider gear?</p>
+        <form id="shippingForm" onsubmit="event.preventDefault();">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="shipName" placeholder="e.g. Vikram Malhotra" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="shipPhone" placeholder="e.g. 9876543210" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="shipEmail" placeholder="vikram@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>6-Digit PIN Code *</label>
+              <input type="text" id="shipPincode" placeholder="e.g. 400001" maxlength="6" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Complete Street Address / Apartment *</label>
+            <input type="text" id="shipAddress" placeholder="Flat 402, Skyline Towers, Link Road" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" id="shipCity" placeholder="Mumbai" required />
+            </div>
+            <div class="form-group">
+              <label>State *</label>
+              <input type="text" id="shipState" placeholder="Maharashtra" required />
+            </div>
+          </div>
+          <div class="checkout-actions">
+            <button type="button" class="outline-button" id="backToCartFromCheckout">Back to Cart</button>
+            <button type="submit" class="primary-button" id="continueToPaymentBtn">Continue to Payment <span>→</span></button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Payment Gateway Selection -->
+      <div class="checkout-step-pane" id="checkoutStep2" style="display:none;">
+        <h3>Select Payment Method</h3>
+        <p class="step-sub">Encrypted 256-bit SSL secure checkout simulation.</p>
+
+        <div class="payment-options-grid">
+          <label class="payment-card active">
+            <input type="radio" name="paymentMethod" value="upi" checked />
+            <div class="payment-card-content">
+              <span class="pay-icon"><img src="images/upi-logo.jpg" alt="UPI / QR" class="pay-icon-img" /></span>
+              <div>
+                <b>Instant UPI / QR Code</b>
+                <small>Google Pay, PhonePe, Paytm, BHIM</small>
+              </div>
+            </div>
+          </label>
+
+          <label class="payment-card">
+            <input type="radio" name="paymentMethod" value="card" />
+            <div class="payment-card-content">
+              <span class="pay-icon">💳</span>
+              <div>
+                <b>Credit / Debit Card</b>
+                <small>Visa, Mastercard, RuPay</small>
+              </div>
+            </div>
+          </label>
+
+          <label class="payment-card">
+            <input type="radio" name="paymentMethod" value="cod" />
+            <div class="payment-card-content">
+              <span class="pay-icon">💵</span>
+              <div>
+                <b>Cash on Delivery (COD)</b>
+                <small>Pay at your doorstep upon delivery</small>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Simulated UPI Entry & Personal QR View -->
+        <div class="payment-detail-box" id="upiDetails">
+          <div class="upi-tab-switch">
+            <button type="button" class="upi-tab-btn active" id="upiQrTabBtn">📷 Scan QR Code</button>
+            <button type="button" class="upi-tab-btn" id="upiVpaTabBtn">✍️ Enter UPI ID</button>
+          </div>
+
+          <!-- Personal QR Code Pane -->
+          <div class="upi-pane active" id="upiQrPane">
+            <div class="upi-qr-card">
+              <div class="upi-qr-header">
+                <span class="upi-merchant-badge">✓ MotoMart Official Verified Merchant</span>
+                <span class="upi-vpa-badge">motomart@okhdfcbank</span>
+              </div>
+
+              <div class="upi-qr-frame dark-theme-qr">
+                <img src="images/sample-upi-qr.jpg" alt="Scan to pay with any UPI app" class="upi-sample-qr-img" />
+                <div class="qr-scan-line"></div>
+              </div>
+
+              <div class="upi-qr-meta">
+                <div class="upi-amount-pill">Amount to Pay: <b id="upiQrAmount">₹0.00</b></div>
+                <div class="upi-app-badges">
+                  <span class="upi-badge">Google Pay</span>
+                  <span class="upi-badge">PhonePe</span>
+                  <span class="upi-badge">Paytm</span>
+                  <span class="upi-badge">BHIM</span>
+                  <span class="upi-badge">Cred</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enter UPI ID Pane -->
+          <div class="upi-pane" id="upiVpaPane" style="display:none;">
+            <div class="card-input-group">
+              <label for="upiVpaInput">Enter UPI ID or Virtual Payment Address (VPA):</label>
+              <input type="text" id="upiVpaInput" placeholder="rider@okhdfcbank" value="rider@upi" />
+            </div>
+            <div class="upi-vpa-quick-chips">
+              <button type="button" class="vpa-quick-chip" data-suffix="@okhdfcbank">@okhdfcbank</button>
+              <button type="button" class="vpa-quick-chip" data-suffix="@okaxis">@okaxis</button>
+              <button type="button" class="vpa-quick-chip" data-suffix="@paytm">@paytm</button>
+              <button type="button" class="vpa-quick-chip" data-suffix="@ybl">@ybl</button>
+            </div>
+          </div>
+
+          <p class="pay-hint">✓ Zero transaction surcharge. Instant automated payment verification.</p>
+        </div>
+
+        <!-- Simulated Credit / Debit Card Entry View -->
+        <div class="payment-detail-box" id="cardDetails" style="display:none;">
+          <div class="card-input-group">
+            <label for="cardNumberInput">Card Number</label>
+            <div class="card-number-wrapper">
+              <input type="text" id="cardNumberInput" placeholder="4532 8900 1234 5678" maxlength="19" autocomplete="cc-number" />
+              <span class="card-brand-badge" id="cardBrandBadge">💳</span>
+            </div>
+          </div>
+
+          <div class="card-input-group">
+            <label for="cardHolderInput">Cardholder Name</label>
+            <input type="text" id="cardHolderInput" placeholder="Vikram Malhotra" autocomplete="cc-name" />
+          </div>
+
+          <div class="card-row-split">
+            <div class="card-input-group">
+              <label for="cardExpiryInput">Expiry Date</label>
+              <input type="text" id="cardExpiryInput" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" />
+            </div>
+            <div class="card-input-group">
+              <label for="cardCvvInput">CVV / CVC</label>
+              <input type="password" id="cardCvvInput" placeholder="•••" maxlength="4" autocomplete="cc-csc" />
+            </div>
+          </div>
+          <p class="pay-hint">🔒 256-bit SSL Encrypted. Supports Visa, Mastercard, RuPay & Amex.</p>
+        </div>
+
+        <!-- Simulated Cash on Delivery View -->
+        <div class="payment-detail-box" id="codDetails" style="display:none;">
+          <p class="cod-note">💵 Pay via cash or scan QR at your doorstep upon delivery.</p>
+          <p class="pay-hint">✓ No advance payment needed. Exact cash or UPI accepted on arrival.</p>
+        </div>
+
+        <div class="checkout-order-total-preview">
+          <span>Amount Payable:</span>
+          <b id="checkoutTotalPreview">₹0.00</b>
+        </div>
+
+        <div class="checkout-actions">
+          <button type="button" class="outline-button" id="backToShippingBtn">← Back</button>
+          <button type="button" class="primary-button" id="placeOrderFinalBtn">Authorize & Place Order <span>✓</span></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Order Confirmation Receipt -->
+      <div class="checkout-step-pane" id="checkoutStep3" style="display:none;">
+        <div class="order-success-screen">
+          <div class="success-animation-circle">✓</div>
+          <h2>Ride On! Order Confirmed.</h2>
+          <p class="success-lead">Your gear is booked and entering dispatch preparation at MotoMart Hub.</p>
+
+          <!-- Professional Realistic Invoice Frame matching user's reference -->
+          <div class="invoice-outer-frame" id="invoiceDocument">
+            <div class="invoice-inner-sheet">
+              <!-- Top Header: MotoMart Logo & Subtitle on Left, "Invoice" on Right -->
+              <div class="invoice-top-bar">
+                <div class="invoice-brand-group">
+                  <img src="logo.png" alt="MotoMart Official Logo" class="invoice-logo" />
+                  <div class="invoice-company-subtext">MOTOMART COMPANY</div>
+                </div>
+                <div class="invoice-headline-group">
+                  <h1 class="invoice-main-title">Invoice</h1>
+                </div>
+              </div>
+
+              <!-- Thin Horizontal Divider Line -->
+              <div class="invoice-hairline"></div>
+
+              <!-- Information Grid: YOUR INFORMATION & CLIENT INFORMATION -->
+              <div class="invoice-parties-row">
+                <div class="invoice-party-block">
+                  <div class="invoice-block-heading">YOUR INFORMATION</div>
+                  <div class="invoice-party-line font-bold">MotoMart Hub India</div>
+                  <div class="invoice-party-line">Plot 42, Speed Corridor, Bandra West</div>
+                  <div class="invoice-party-line">Mumbai, Maharashtra 400050</div>
+                  <div class="invoice-party-line">support@motomart.in</div>
+                </div>
+
+                <div class="invoice-party-block">
+                  <div class="invoice-block-heading">CLIENT INFORMATION</div>
+                  <div class="invoice-party-line font-bold" id="invClientName">Vikram Malhotra</div>
+                  <div class="invoice-party-line" id="invClientAddress">456 Palm Grove Road, Bandra West</div>
+                  <div class="invoice-party-line" id="invClientCityState">Mumbai, Maharashtra 400050</div>
+                  <div class="invoice-party-line" id="invClientEmail">vikram@example.com</div>
+                </div>
+              </div>
+
+              <!-- Dates Grid: ISSUED ON & DUE DATE -->
+              <div class="invoice-dates-row">
+                <div class="invoice-date-block">
+                  <div class="invoice-block-heading">ISSUED ON</div>
+                  <div class="invoice-date-value" id="invIssuedDate">12/10/2026</div>
+                </div>
+
+                <div class="invoice-date-block">
+                  <div class="invoice-block-heading">DUE DATE</div>
+                  <div class="invoice-date-value" id="invDueDate">12/11/2026</div>
+                </div>
+              </div>
+
+              <!-- Itemized Table with Burgundy Header Bar -->
+              <div class="invoice-table-wrapper">
+                <table class="invoice-items-table">
+                  <thead>
+                    <tr>
+                      <th class="inv-col-desc">ITEM DESCRIPTION</th>
+                      <th class="inv-col-qty">QUANTITY</th>
+                      <th class="inv-col-unit">UNIT PRICE</th>
+                      <th class="inv-col-total">TOTAL PRICE</th>
+                    </tr>
+                  </thead>
+                  <tbody id="invoiceTableRows">
+                    <tr>
+                      <td class="inv-cell-desc">
+                        <div class="inv-item-name">ECE 22.06 Carbon Fiber Full-Face Helmet</div>
+                        <div class="inv-item-meta">Size: L • High-Impact Carbon Shell</div>
+                      </td>
+                      <td class="inv-cell-qty">1</td>
+                      <td class="inv-cell-unit">₹4,999</td>
+                      <td class="inv-cell-total">₹4,999</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table Bottom Divider Line -->
+              <div class="invoice-table-bottom-bar"></div>
+
+              <!-- Totals and Signature Section -->
+              <div class="invoice-closing-section">
+                <div class="invoice-total-display">
+                  <span class="inv-total-label">Total Amount Due:</span>
+                  <span class="inv-total-value" id="invTotalDue">₹4,999.00</span>
+                </div>
+
+                <div class="invoice-signature-area">
+                  <svg class="inv-signature-graphic" viewBox="0 0 200 65" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 20,44 C 42,20 52,14 66,35 C 74,48 84,44 98,25 C 108,12 114,35 128,30 C 140,24 150,17 170,20 M 40,33 C 70,33 118,35 178,29" 
+                          stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <text x="52" y="42" font-family="'Caveat', 'Brush Script MT', cursive" font-size="26" font-style="italic" fill="#181818" font-weight="600">John Smith</text>
+                  </svg>
+                  <div class="inv-signatory-title">Authorized Signatory</div>
+                </div>
+              </div>
+
+              <!-- Footer Note -->
+              <div class="invoice-disclaimer-note">
+                Thank you for choosing our services! We appreciate the opportunity to work with you. Please make the payment within 30 days of receiving this invoice. If you have any questions or concerns regarding the invoice, feel free to contact us at the provided email address. We look forward to serving you again in the future.
+              </div>
+            </div>
+          </div>
+
+          <!-- Hidden compatibility nodes for existing receipt listeners -->
+          <div style="display:none;">
+            <span id="receiptOrderId">#MM-2026-8941</span>
+            <span id="receiptDeliveryDate">Wednesday, Sep 30</span>
+            <span id="receiptDestination">Vikram Malhotra, Mumbai</span>
+            <span id="receiptTotalPaid">₹0.00</span>
+            <div id="receiptItemsSummary"></div>
+          </div>
+
+          <div class="success-actions">
+            <button class="primary-button" id="continueShoppingSuccessBtn">Continue Riding (Home)</button>
+            <button class="outline-button" onclick="window.print()">Print Invoice 🖨️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ACCOUNT / REGISTRATION & LOGIN MODAL ================= -->
+  <div class="modal-backdrop" id="authModalBackdrop">
+    <div class="auth-modal" role="dialog" aria-modal="true">
+      <button class="close-modal-btn" id="closeAuthModalBtn" aria-label="Close Modal">✕</button>
+      
+      <!-- Unauthenticated View (Tabs for Register vs Login) -->
+      <div class="auth-modal-content" id="authLoggedOutView">
+        <div class="auth-header">
+          <span class="auth-icon-badge">🏍️</span>
+          <h2>MotoMart Riders Club</h2>
+          <p>Create an account to save your rider profile, track deliveries, and sync with MongoDB.</p>
+        </div>
+
+        <!-- Auth Navigation Tabs -->
+        <div class="auth-tab-switch">
+          <button type="button" class="auth-tab-btn active" id="tabCreateAccountBtn">✨ Create Account</button>
+          <button type="button" class="auth-tab-btn" id="tabSignInBtn">🔑 Sign In</button>
+        </div>
+
+        <!-- 1. CREATE ACCOUNT FORM (With Password & Confirm Password) -->
+        <form id="authRegisterForm" class="auth-form">
+          <div class="form-group">
+            <label for="authNameInput">Rider Name / Handle *</label>
+            <input type="text" id="authNameInput" placeholder="e.g. Vikram Malhotra" required autocomplete="name" />
+          </div>
+
+          <div class="form-group">
+            <label for="authEmailInput">Email Address *</label>
+            <input type="email" id="authEmailInput" placeholder="rider@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="authPhoneInput">Mobile / WhatsApp Number</label>
+            <input type="tel" id="authPhoneInput" placeholder="e.g. +91 98765 43210" autocomplete="tel" />
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="authRegisterPassword">Set Account Password *</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="authRegisterPassword" placeholder="Minimum 6 characters" minlength="6" required autocomplete="new-password" />
+              <button type="button" class="password-toggle-btn" data-target="authRegisterPassword" aria-label="Toggle Password Visibility">👁️</button>
+            </div>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="form-group">
+            <label for="authRegisterConfirmPassword">Confirm Password *</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="authRegisterConfirmPassword" placeholder="Re-enter your password" minlength="6" required autocomplete="new-password" />
+              <button type="button" class="password-toggle-btn" data-target="authRegisterConfirmPassword" aria-label="Toggle Password Visibility">👁️</button>
+            </div>
+            <div class="password-match-indicator" id="passwordMatchMsg"></div>
+          </div>
+
+          <button type="submit" class="primary-button auth-submit-btn" id="authSubmitBtn">
+            <span>Create Account & Register</span> ➔
+          </button>
+          <p class="auth-switch-prompt">Already have an account? <a href="#" id="switchLoginLink">Sign In here</a></p>
+          <p class="auth-privacy-note">🔒 Password encrypted with bcrypt & stored securely in MongoDB Atlas.</p>
+        </form>
+
+        <!-- 2. SIGN IN / LOGIN FORM -->
+        <form id="authLoginForm" class="auth-form" style="display:none;">
+          <div class="form-group">
+            <label for="authLoginEmail">Registered Email *</label>
+            <input type="email" id="authLoginEmail" placeholder="rider@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="authLoginPassword">Password *</label>
+            <div class="password-input-wrapper">
+              <input type="password" id="authLoginPassword" placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="password-toggle-btn" data-target="authLoginPassword" aria-label="Toggle Password Visibility">👁️</button>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-button auth-submit-btn" id="authLoginSubmitBtn">
+            <span>Sign In to Account</span> ➔
+          </button>
+          <p class="auth-switch-prompt">Don't have an account? <a href="#" id="switchRegisterLink">Create an Account</a></p>
+          <p class="auth-privacy-note">🔒 Secured by 256-bit SSL & MongoDB Atlas Cloud Database.</p>
+        </form>
+      </div>
+
+      <!-- Logged In / Profile View -->
+      <div class="auth-modal-content" id="authLoggedInView" style="display:none;">
+        <div class="auth-header">
+          <span class="auth-icon-badge">✓</span>
+          <h2>Rider Profile</h2>
+          <p id="loggedInWelcomeText">Welcome back to MotoMart!</p>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-field">
+            <span>Rider Name:</span>
+            <b id="profileNameVal">Rider</b>
+          </div>
+          <div class="profile-field">
+            <span>Registered Email:</span>
+            <b id="profileEmailVal">-</b>
+          </div>
+          <div class="profile-field">
+            <span>Phone:</span>
+            <b id="profilePhoneVal">-</b>
+          </div>
+          <div class="profile-field">
+            <span>Total Site Visits:</span>
+            <b id="profileVisitsVal">1</b>
+          </div>
+          <div class="profile-field">
+            <span>Database Status:</span>
+            <b class="db-live-badge">● Synced with MongoDB</b>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button type="button" class="outline-button" id="profileInvoiceBtn" onclick="openInvoiceModal()">Official Invoice 📄</button>
+          <button type="button" class="outline-button" id="authLogoutBtn">Sign Out</button>
+          <button type="button" class="primary-button" id="authCloseProfileBtn">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Feedback -->
+  <div class="toast" id="toast">Added to your cart ✓</div>
+
+  <!-- Core App Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
